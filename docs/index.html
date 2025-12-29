@@ -5,59 +5,77 @@
 <title>ATAGUL IDE Download</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-:root {
-  --bg: #0d0f1a;
-  --card: #15182b;
-  --accent: #6c7cff;
-  --text: #e8eaff;
-  --muted: #9aa0ff;
-}
-* { box-sizing: border-box; font-family: system-ui, sans-serif; }
 body {
-  margin:0; min-height:100vh;
-  display:flex; justify-content:center; align-items:center;
-  background: radial-gradient(circle at top, #1a1f4d, var(--bg));
-  color: var(--text);
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: radial-gradient(circle at top, #1a1f4d, #0d0f1a);
+  font-family: system-ui, sans-serif;
+  color: #e8eaff;
+  overflow:hidden;
+  text-align:center;
 }
 .card {
-  background: var(--card); padding:40px; border-radius:20px; text-align:center;
-  box-shadow:0 30px 80px rgba(0,0,0,.6); animation:fadeUp 1s ease;
-  max-width:420px; width:100%;
+  background: #15182b;
+  padding:50px;
+  border-radius:20px;
+  max-width:400px;
+  width:90%;
+  box-shadow: 0 30px 80px rgba(0,0,0,.6);
 }
 .logo {
-  width:72px; height:72px; border-radius:16px;
-  background: linear-gradient(135deg,var(--accent),#8f9bff);
-  display:flex; align-items:center; justify-content:center;
-  font-weight:900; font-size:26px; margin:0 auto 20px;
+  width:80px;
+  height:80px;
+  margin:0 auto 20px;
+  background: linear-gradient(135deg,#6c7cff,#8f9bff);
+  border-radius:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  font-size:28px;
   animation:float 3s ease-in-out infinite;
 }
-h1 { margin:10px 0; font-size:28px; }
-p { color: var(--muted); margin-bottom:30px; }
-a.download {
-  display:inline-block; padding:14px 28px; background:var(--accent);
-  color:white; text-decoration:none; font-weight:600; border-radius:12px;
-  transition: transform .2s, box-shadow .2s;
+h1 { font-size:30px; margin:10px 0; }
+#status {
+  font-size:20px;
+  color: #6c7cff;
+  margin-top:20px;
+  animation:pulse 1s infinite;
 }
-a.download:hover {
-  transform: translateY(-3px); box-shadow:0 15px 40px rgba(108,124,255,.5);
+@keyframes float {
+  0%,100%{ transform:translateY(0);}
+  50% { transform:translateY(-6px);}
 }
-.footer { margin-top:25px; font-size:13px; opacity:.7; }
-@keyframes fadeUp { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
-@keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-6px);} }
+@keyframes pulse {
+  0%,100%{ opacity:1;}
+  50%{ opacity:0.4;}
+}
 </style>
 </head>
 <body>
 <div class="card">
   <div class="logo">AI</div>
   <h1>ATAGUL IDE</h1>
-  <p>Lightweight & smart development environment</p>
-
-  <!-- BURAYA DOĞRUDAN İNDİRME LİNKİNİ KOY -->
-  <a class="download" href="https://github.com/ama07a/atagul--de/releases/download/v1.0.0/ATAGULIDE.exe" download>
-    Download EXE
-  </a>
-
-  <div class="footer">© 2025 ATAGUL GAMES</div>
+  <p id="status">Downloading...</p>
 </div>
+
+<script>
+// Microsoft Store uyumlu direct EXE link
+const exeUrl = "https://github.com/ama07a/atagul–de/releases/download/v1.0.0/ATAGULIDE.exe";
+
+// 1 saniye bekle, sonra otomatik indir
+setTimeout(function(){
+  const a = document.createElement('a');
+  a.href = exeUrl;
+  a.download = "ATAGULIDE.exe";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  document.getElementById('status').textContent = "Download started!";
+}, 1000);
+</script>
 </body>
 </html>
