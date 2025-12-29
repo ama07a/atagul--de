@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ATAGUL IDE Download</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{margin:0;height:100vh;display:flex;justify-content:center;align-items:center;background:radial-gradient(circle at top,#1a1f4d,#0d0f1a);color:#e8eaff;font-family:system-ui,sans-serif;text-align:center;overflow:hidden;}
+.card{background:#15182b;padding:50px;border-radius:20px;max-width:400px;width:90%;box-shadow:0 30px 80px rgba(0,0,0,.6);}
+.logo{width:80px;height:80px;margin:0 auto 20px;background:linear-gradient(135deg,#6c7cff,#8f9bff);border-radius:20px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:28px;animation:float 3s ease-in-out infinite;}
+h1{font-size:30px;margin:10px 0;}
+#status{font-size:20px;color:#6c7cff;margin-top:20px;animation:pulse 1s infinite;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">AI</div>
+  <h1>ATAGUL IDE</h1>
+  <p id="status">Downloading...</p>
+</div>
+
+<script>
+// GitHub Pages veya Azure Blob direct link kullan
+const exeUrl = "https://ama07a.github.io/atagul--de/ATAGULIDE.exe";
+
+// 1 saniye bekle → otomatik indir
+setTimeout(function(){
+  const a=document.createElement('a');
+  a.href=exeUrl;
+  a.download="ATAGULIDE.exe";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  document.getElementById('status').textContent="Download started!";
+},1000);
+</script>
+</body>
+</html>
